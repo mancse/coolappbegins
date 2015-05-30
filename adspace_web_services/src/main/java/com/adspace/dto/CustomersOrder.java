@@ -1,7 +1,5 @@
 package com.adspace.dto;
 
-import java.util.Date;
-
 public class CustomersOrder {
 	int orderId;
 	String customerName;
