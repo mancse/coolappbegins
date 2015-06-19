@@ -623,8 +623,10 @@ angular.module('mySampleApp.controllers', ['datatablesDirectives']).
         });
       });
     
-    });
+    }).controller('mailboxCtrl', function($scope){
 
+
+   });
 
 
 
