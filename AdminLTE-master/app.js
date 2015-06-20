@@ -5,7 +5,7 @@ var app = angular.module("mySampleApp", [
 
 app.config(function($routeProvider) {
 
-  $routeProvider.when("/dashboard", {templateUrl: "dashboard.html", controller: "dashBoardCtrl"}).
+  $routeProvider.when("/dashboard", {templateUrl: "dashboard_new.html", controller: "dashBoardCtrl"}).
   				 when("/orders", {templateUrl:"orders.html", controller: "ordersCtrl"}).
   				 when("/hordings", {templateUrl:"hordings.html", controller: "hordingsCtrl"}).
   				 when("/notes", {templateUrl:"notes.html", controller: "notesCtrl"}).
