@@ -1,6 +1,10 @@
 // Karma configuration
 // http://karma-runner.github.io/0.12/config/configuration-file.html
+<<<<<<< HEAD
 // Generated on 2015-06-22 using
+=======
+// Generated on 2015-06-20 using
+>>>>>>> eb2827c1f9506150e5f7c55f2798459989659683
 // generator-karma 1.0.0
 
 module.exports = function(config) {
@@ -22,6 +26,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+<<<<<<< HEAD
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
@@ -37,6 +42,8 @@ module.exports = function(config) {
       'bower_components/kapusta-jquery.sparkline/dist/jquery.sparkline.min.js',
       'bower_components/Chart.js/Chart.js',
       'bower_components/angular-mocks/angular-mocks.js',
+=======
+>>>>>>> eb2827c1f9506150e5f7c55f2798459989659683
       // endbower
       "app/scripts/**/*.js",
       "test/mock/**/*.js",

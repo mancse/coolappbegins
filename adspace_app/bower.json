@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "adspace-app",
   "version": "0.0.0",
   "dependencies": {
@@ -22,4 +23,38 @@
   },
   "appPath": "app",
   "moduleName": "adspaceAppApp"
+=======
+  "name": "AdminLTE",
+  "version": "2.0.5",
+  "homepage": "http://almsaeedstudio.com",
+  "authors": [
+    "Abdullah Almsaeed <almasaeed2010@gmail.com>"
+  ],
+  "description": "Admin dashboard and control panel template",
+  "main": [
+    "index2.html",
+    "dist/css/AdminLTE.css",
+    "dist/js/app.js",
+    "build/less/AdminLTE.less"
+  ],
+  "keywords": [
+    "css",
+    "js",
+    "html",
+    "template",
+    "admin",
+    "bootstrap",
+    "theme",
+    "backend",
+    "responsive"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "/.*",
+    "node_modules",
+    "bower_components",
+    "composer.json",
+    "documentation"
+  ]
+>>>>>>> eb2827c1f9506150e5f7c55f2798459989659683
 }

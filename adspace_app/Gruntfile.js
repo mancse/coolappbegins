@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // Generated on 2015-06-22 using generator-angular 0.11.1
+=======
+// Generated on 2015-06-20 using generator-angular 0.11.1
+>>>>>>> eb2827c1f9506150e5f7c55f2798459989659683
 'use strict';
 
 // # Globbing

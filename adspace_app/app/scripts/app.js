@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var app = angular.module("adSpaceApp", [
    'ngRoute'
 ]);
@@ -21,3 +22,38 @@ app.config(function($routeProvider) {
   				
 });
 
+=======
+'use strict';
+
+/**
+ * @ngdoc overview
+ * @name adspaceAppApp
+ * @description
+ * # adspaceAppApp
+ *
+ * Main module of the application.
+ */
+angular
+  .module('adspaceAppApp', [
+    'ngAnimate',
+    'ngCookies',
+    'ngResource',
+    'ngRoute',
+    'ngSanitize',
+    'ngTouch'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });
+>>>>>>> eb2827c1f9506150e5f7c55f2798459989659683
