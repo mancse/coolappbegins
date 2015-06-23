@@ -329,6 +329,9 @@
                 <!-- /.box -->
                 <!-- /.row -->
                 <!-- TABLE: LATEST ORDERS -->
+
+                <div ng-switch="step">
+                <div ng-switch-when="1" class="panel">
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Latest Orders</h3>
@@ -358,13 +361,11 @@
                                         <td>
                                             <a href="pages/examples/invoice.html">{{order.orderNum }}</a>
                                         </td>
-                                        <td>{{order.customer}}
-</td>
+                                        <td>{{order.customer}}</td>
                                         <td> 
                                             <span class="label label-success">{{order.status}}</span>
                                         </td>
-                                        <td> {{order.contact}}
-</td>
+                                        <td> {{order.contact}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -373,11 +374,80 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <a href="#/neworder" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                        <button title="Next Step" class="btn btn-sm btn-default btn-flat pull-left" ng-click="setStep(2)">
+                            <b>Add New Order</b>
+                        </button>
                         <a href="#/orders" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
                     </div>
                     <!-- /.box-footer -->
                 </div>
+             </div>
+            
+            <div ng-switch-when="2" class="panel">
+                    <!-- general form elements -->
+                    <div class="box box-info">
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Latest Orders</h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                                    </button>
+                                <button class="btn btn-box-tool" data-widget="remove">
+                                <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="box-body">
+                                <form ng-submit="submit(order.$valid)" name="order">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    <input type="text" name="customerName" class="form-control" placeholder="Customer Name *" ng-model="customerName" required oninvalid="this.setCustomValidity('Please enter Customer Name ')" oninput="setCustomValidity('')">
+                                </div>
+                                <br />
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                    <input type="number" class="form-control" placeholder="Customer Contact *" required oninvalid="this.setCustomValidity('Please enter Customer Contact Number')" oninput="setCustomValidity('')">
+                                </div>
+                                <br />
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" class="form-control" placeholder="Customer Email">
+                                </div>
+                                <br />
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" placeholder="Starting From">
+                                </div>
+                                <br />
+                                <br />
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    <input type="date" class="form-control" placeholder="Completing On *" required oninvalid="this.setCustomValidity('Please enter Completion Date')" oninput="setCustomValidity('')">
+                                </div>
+                                <br />
+                                <br />
+                                <div class="form-group">
+                                    <select ng-model="label" ng-options="option.label for option in options" class="form-control" required oninvalid="this.setCustomValidity('Please select Hording')" onchange="setCustomValidity('')">
+                                        <option value="">Select Hording *</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-sm btn-info btn-flat pull-left">Save Order</button>
+                                <button type="button" ng-click="setStep(1)" class="btn btn-sm btn-info btn-flat pull-right">Cancel</button>
+                            </div>
+                        </form>
+                    </div>                
+                    
+         </div> <!--ng-switch end -->
+
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">Visitors Report</h3>

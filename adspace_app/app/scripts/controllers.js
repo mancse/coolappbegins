@@ -33,7 +33,13 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
         alert(task); 
      	
       };
-        	 
+
+  $scope.setStep = function(index)
+  {
+      $scope.step = index;
+  };
+    
+  $scope.setStep(1);
   $scope.deleteRow = function(task){
   	
   			if(confirm("sure to delete")){
