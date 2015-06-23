@@ -1,4 +1,4 @@
-var app = angular.module("adSpaceApp", [
+var app = angular.module("adSpaceApp", ['adSpaceApp.controllers',
    'ngRoute'
 ]);
 
