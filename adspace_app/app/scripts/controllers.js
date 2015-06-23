@@ -149,8 +149,6 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
 				 	return ' <span class="label label-warning col-md-7 col-md-offset-2 ">'+data.status+'</span>';
 			}
     
-
-    
     }).
     controller('HordingsCtrl', function($scope){
     
@@ -250,8 +248,8 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
 
 			}
 
-			$scope.dtOptionsExample2 = {
-				sAjaxSource: 'data.json',
+			$scope.dtOptions = {
+				sAjaxSource: 'data/todos.json',
 				sAjaxDataProp: 'result',
 				bProcessing: false,
 				bPaginate: true,
@@ -260,28 +258,8 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
                 bSort: true,
                 bInfo: true,
                 bAutoWidth: false,
-				fnRowCallback: function(row, data, index, fullindex) {
-					if (data.id === 1) {
-						angular.element(row).addClass('blue');
-					}
-				}
 			}
-			
-
-
-			// This is an example of column callback
-			$scope.idCB = function(data) {
-				if (data.id > 3) {
-					return '<span class="label label-info">'+data.id+'</span>'
-				} 
-				return '<span class="label label-important">'+data.id+'</span>'
-			}
-
-			// Anoter example
-			$scope.aboutCB = function(data) {
-				return data.about.text.substring(0, 50) + '...';
-			}
-    
+			    
     }).
     controller('ArchivedordersCtrl', function($scope){
     
@@ -297,8 +275,8 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
 
 			}
 
-			$scope.dtOptionsExample2 = {
-				sAjaxSource: 'data.json',
+			$scope.dtOptions = {
+				sAjaxSource: 'data/completedorders.json',
 				sAjaxDataProp: 'result',
 				bProcessing: false,
 				bPaginate: true,
@@ -307,28 +285,17 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
                 bSort: true,
                 bInfo: true,
                 bAutoWidth: false,
-				fnRowCallback: function(row, data, index, fullindex) {
-					if (data.id === 1) {
-						angular.element(row).addClass('blue');
-					}
-				}
+				
 			}
+			$scope.idCB = function(data){
 			
-
-
-			// This is an example of column callback
-			$scope.idCB = function(data) {
-				if (data.id > 3) {
-					return '<span class="label label-info">'+data.id+'</span>'
-				} 
-				return '<span class="label label-important">'+data.id+'</span>'
+				return '<a href="pages/examples/invoice.html">'+data.id+'</a>';
+			
 			}
-
-			// Anoter example
-			$scope.aboutCB = function(data) {
-				return data.about.text.substring(0, 50) + '...';
+			$scope.statusCB = function(data) {
+				
+				 	return ' <span class="label label-danger col-md-7 col-md-offset-2">'+data.status+'</span>';
 			}
-    
     }).
     controller('RemindersCtrl', function($scope){
     
@@ -344,8 +311,8 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
 
 			}
 
-			$scope.dtOptionsExample2 = {
-				sAjaxSource: 'data.json',
+			$scope.dtOptions = {
+				sAjaxSource: 'data/reminders.json',
 				sAjaxDataProp: 'result',
 				bProcessing: false,
 				bPaginate: true,
@@ -354,28 +321,9 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
                 bSort: true,
                 bInfo: true,
                 bAutoWidth: false,
-				fnRowCallback: function(row, data, index, fullindex) {
-					if (data.id === 1) {
-						angular.element(row).addClass('blue');
-					}
-				}
+				
 			}
 			
-
-
-			// This is an example of column callback
-			$scope.idCB = function(data) {
-				if (data.id > 3) {
-					return '<span class="label label-info">'+data.id+'</span>'
-				} 
-				return '<span class="label label-important">'+data.id+'</span>'
-			}
-
-			// Anoter example
-			$scope.aboutCB = function(data) {
-				return data.about.text.substring(0, 50) + '...';
-			}
-    
     }).
     controller('OpportunitiesCtrl', function($scope){
     
