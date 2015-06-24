@@ -28,7 +28,15 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
                     ];
 
     
-       
+  
+   $scope.options = [{label:"option1",value:"1"},{label:"option2",value:"2"},{label:"option3",value:"3"}];
+
+	$scope.submit =  function(isvalid, index){
+			if(isvalid)
+    		$scope.step = index;
+        };
+
+           
   $scope.remind = function(task){
         alert(task); 
      	
@@ -581,22 +589,7 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
 
 
    }).
-    controller('NeworderCtrl', function($scope, $location){
-   
-   
-   $scope.options = [{label:"option1",value:"1"},{label:"option2",value:"2"},{label:"option3",value:"3"}];
-
-                $scope.submit =  function(isvalid){
-                        if(isvalid)
-                                $location.path('/dashboard');
-        };
-
-        $scope.cancel = function(){
-
-                        $location.path('/dashboard');
-        };
-}).
-	controller('NewhordingCtrl', function($scope, $location){
+   controller('NewhordingCtrl', function($scope, $location){
    
    
    $scope.options = [{label:"option1",value:"1"},{label:"option2",value:"2"},{label:"option3",value:"3"}];
