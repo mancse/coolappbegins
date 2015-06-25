@@ -379,7 +379,7 @@
                             <div class="box-footer clearfix">
                                 <button title="Next Step" class="btn btn-sm btn-flat btn-info pull-left" ng-click="setStep(2)">
                                     Add New Order
-</button>
+								</button>
                                 <a href="#/orders" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
                             </div>
                             <!-- /.box-footer -->
@@ -407,34 +407,25 @@
                                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                         <input type="text" name="customerName" class="form-control" placeholder="Customer Name *" ng-model="customerName" required>
                                     </div>
-                                    <div>
-                                        <p ng-show="order.customerName.$error.required">Your username is required.</p>
-                                    </div>
-                                    <br />
-                                    <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                                         <input type="number" class="form-control" placeholder="Customer Contact *" required oninvalid="this.setCustomValidity('Please enter Customer Contact Number')" oninput="setCustomValidity('')">
                                     </div>
-                                    <br />
                                     <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                         <input type="email" class="form-control" placeholder="Customer Email">
                                     </div>
                                     <br />
-                                    <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         <input type="date" class="form-control" placeholder="Starting From">
                                     </div>
                                     <br />
-                                    <br />
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                         <input type="date" class="form-control" placeholder="Completing On *" required oninvalid="this.setCustomValidity('Please enter Completion Date')" oninput="setCustomValidity('')">
                                     </div>
-                                    <br />
                                     <br />
                                     <div class="form-group">
                                         <select ng-model="label" ng-options="option.label for option in options" class="form-control" required oninvalid="this.setCustomValidity('Please select Hording')" onchange="setCustomValidity('')">
