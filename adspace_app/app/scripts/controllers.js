@@ -42,12 +42,19 @@ angular.module('adSpaceApp.controllers', ['datatablesDirectives']).
      	
       };
 
-  $scope.setStep = function(index)
+  $scope.setOrderStep = function(index)
   {
-      $scope.step = index;
+      $scope.orderStep = index;
   };
     
-  $scope.setStep(1);
+  $scope.setOrderStep(1);
+  
+  $scope.setHordingStep = function(index)
+  {
+      $scope.hordingStep = index;
+  };
+    
+  $scope.setHordingStep(1);
   $scope.deleteRow = function(task){
   	
   			if(confirm("sure to delete")){
