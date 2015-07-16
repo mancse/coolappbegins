@@ -1,5 +1,4 @@
-var app = angular.module("adSpaceApp", ['adSpaceApp.controllers',
-   'ngRoute'
+var app = angular.module('adSpaceApp', ['ngRoute','adSpaceApp.controllers'
 ]);
 
 app.config(function($routeProvider) {

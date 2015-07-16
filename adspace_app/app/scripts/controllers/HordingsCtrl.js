@@ -1,15 +1,9 @@
-angular.module('adSpaceApp').controller('HordingsCtrl', function ($scope){
+mainctrl.controller('HordingsCtrl', function ($scope){
 'use strict';
 $scope.dtOptions = {
 				
 				iDisplayLength: 10,
-
-
-				// These 2 lines are for styling. Ignore!
-				///sDom: "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>",
 				sbPaginationType: "bootstrap",
-				// End
-
 			}
 
 			$scope.dtOptions= {

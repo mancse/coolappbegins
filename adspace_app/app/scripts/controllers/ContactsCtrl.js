@@ -1,4 +1,4 @@
-angular.module('adSpaceApp').controller('ContactsCtrl', function ($scope){
+mainctrl.controller('ContactsCtrl', function ($scope){
 'use strict';
 	$scope.dtOptions = {
 				

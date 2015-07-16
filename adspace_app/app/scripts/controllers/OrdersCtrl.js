@@ -1,5 +1,4 @@
-var app = angular.module('adSpaceApp.controller', ['datatablesDirectives']);
-app.controller('OrdersCtrl', function ($scope){
+mainctrl.controller('OrdersCtrl', function ($scope){
 'use strict';
 $scope.dtOptions = {
 				
