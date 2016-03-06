@@ -1,0 +1,252 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+
+select option {
+  color: #bec8d2;
+  background-color: #273142;
+  /*background-color:rgba(152, 162, 174, 0.5);*/
+}
+.glyphicon {
+  font-size: 11px;
+}
+
+.h-button {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  border: 0px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.h-primary {
+  background-color: #00c9ff;
+  color: #ffffff;
+}
+
+.tableWrapper {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  /*background-color: rgba(255,0,0,0.5);*/
+  /*border: 1px solid red;*/
+  color: #98a2ae;
+}
+.tableWrapper .tableHeadingContainer {
+  height: 10%;
+  /*background-color: rgba(0,255,0,0.5);*/
+  /*border: 1px solid green;*/
+}
+.tableWrapper .tableHeadingContainer table {
+  /*background-color: #273142;  */
+  background: #010b1e;
+  color: white;
+}
+.tableWrapper table {
+  width: 80%;
+  height:60%;
+  /*background:#010b1e;*/
+}
+.tableWrapper .tableHeadingContainer table tr {
+  height: 30px;
+}
+.tableWrapper table tr td {
+  padding: 5px;
+  /*border: 1px solid #010b1e;*/
+  border: 1px solid #ecf2f4;
+}
+.tableWrapper table tr td,
+th {
+  padding: 5px;
+}
+
+.tableWrapper .tableContainer table tr {
+  height: 50px;
+}
+
+.h-button {
+  padding: 0px;
+  margin: 0px;
+  text-decoration: none;
+  border: 0px;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  -o-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.h-primary {
+  background-color: #00c9ff;
+  color: #ffffff;
+}
+.h-primary:hover {
+  background-color: #00b2e5;
+}
+.h-secondary {
+  background-color: transparent;
+  color: #00c9ff;
+  border: 1px solid #00c9ff;
+}
+.h-secondary:hover {
+  background-color: #00b2e5;
+  color: #ffffff;
+  border: 1px solid #00b2e5;
+}
+.h-tertiary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+.h-tertiary:hover {
+  background-color: #ffffff;
+  color: #4d5766;
+  border: 1px solid #ffffff;
+}
+.h-small {
+  font-size: 0.75em;
+  padding: 3px 8px;
+  min-width: 40px;
+}
+.h-normal {
+  font-size: 0.85em;
+  padding: 6px 9px;
+  min-width: 60px;
+}
+.h-big {
+  font-size: 0.95em;
+  padding: 7px 10px;
+  min-width: 80px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+.h-input-text {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  box-shadow: none;
+  outline: 0px;
+  color: #bec8d2;
+  border: 1px solid #ffffff;
+}
+.h-input-text:focus {
+  color: #4d5766;
+  border: 1px solid #00c9ff;
+}
+.h-input-text.h-invalid-text {
+  border: 1px solid #ffd6dd;
+  background: #ffd6dd url('../images/invalid.svg') no-repeat center right;
+  color: #ff3154;
+}
+.h-input-text:disabled,
+.h-button:disabled {
+  background-color: #ffffff;
+  color: #bec8d2;
+  opacity: 0.2;
+}
+.h-new-button-holder {
+  width: 100%;
+  padding: 0px 20px;
+  /*background-color:red;
+	border:1px solid blue;*/
+}
+.linksContainer {
+  padding-top: 5px;
+  height: 5%;
+  position: relative;
+  bottom: 0%;
+}
+#destination-manouvres-wrapper .h-simple-text-link a,
+#destination-prepositions-wrapper .h-simple-text-link a {
+  margin: 00px 0px 0px 00px;
+}

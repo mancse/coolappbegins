@@ -1,0 +1,77 @@
+<div>
+  <div data-ng-controller="AllOrdersDetailsCtrl" data-ng-init="allOrdersLoad()"> 
+  <div id="tableWrapper" class="tableWrapper" ng-show="(!showOrderDetail)">
+   <div id="tableContainer" class="tableContainer">
+        <table>
+          <thead><b>All Orders Details</b></thead>
+          <tbody>
+          	<tr ng-repeat="order in allOrders" style="background-color:{{$index === 0?'rgba(100,100,100,100)':'rgba(100,100,100,100)'}}">
+           		  <td>
+            	 	  <span>Order Id# </span><br>
+		              <label class="h-checkbox-radio-label-text" for="radio"><a ng-click="getOrderDetail($event,order.orderId)">{{order.orderId}}</a></label>
+		         </td>
+		         
+		          <td>
+            	 	  <span>Van Number# </span><br>
+		              <label class="h-checkbox-radio-label-text" for="radio">{{order.bookingOrder.vanNumber}}</label>
+		         </td>
+		         
+		         <td>
+            	 	  <span>Carton Number# </span><br>
+		              <label class="h-checkbox-radio-label-text" for="radio">{{order.bookingOrder.cartonNumber}}</label>
+		         </td>
+		         <td>
+            	 	  <span>Booking Day(day/month/year): </span><br>
+		              <label class="h-checkbox-radio-label-text" for="radio">{{order.bookingOrder.bookingSlot.day}}/{{order.bookingOrder.bookingSlot.month}}/{{order.bookingOrder.bookingSlot.year}}</label>
+		         </td>
+		         <td>
+            	 	  <span>Booking Time(hour/minute/second) </span><br>
+		              <label class="h-checkbox-radio-label-text" for="radio">{{order.bookingOrder.bookingSlot.hour}}/{{order.bookingOrder.bookingSlot.minute}}/{{order.bookingOrder.bookingSlot.second}}</label>
+		         </td>
+         	</tr>
+         	 
+          </tbody>
+        </table>
+        
+     </div>
+   </div> 
+   
+     <div id="tableWrapper" class="tableWrapper" ng-show="showOrderDetail">
+   		<div id="tableContainer" class="tableContainer">
+        <table>
+          <thead ng-hide="onBackPress"><b>Order Detail</b></thead>
+          <tbody>
+          	<tr ng-repeat="item in orderItems" style="background-color:{{$index === 0?'rgba(100,100,100,100)':'rgba(100,100,100,100)'}}">
+           		  <td>
+            	 	  <span>Category: </span><br>
+		              <label class="h-checkbox-radio-label-text">{{item.category}}</label>
+		         </td>
+		         
+		          <td>
+            	 	  <span>Details: </span><br>
+		              <label class="h-checkbox-radio-label-text">{{item.details}}</label>
+		         </td>
+		         
+		         <td>
+            	 	  <span>Height: </span><br>
+		              <label class="h-checkbox-radio-label-text">{{item.height}}</label>
+		         </td>
+		         <td>
+            	 	  <span>Width: </span><br>
+		              <label class="h-checkbox-radio-label-text">{{item.width}}</label>
+		         </td>
+		         <td>
+            	 	  <span>Breadth: </span><br>
+		              <label class="h-checkbox-radio-label-text">{{item.breadth}}</label>
+		         </td>
+         	</tr>
+         	 
+          </tbody>
+        </table>
+        <div ng-hide="onBackPress">
+      		 <button id="proceed"  ng-click="goBack()" class="h-button h-normal h-primary active"><b>Back</b></button>
+   		</div>
+     </div>
+   </div>   
+  </div> 
+</div> 

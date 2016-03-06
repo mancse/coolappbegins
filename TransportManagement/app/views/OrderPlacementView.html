@@ -1,0 +1,128 @@
+<div>  
+  <div id="tableWrapper" class="tableWrapper" ng-show="!order.onSlotBooking">
+   <div id="tableContainer" class="tableContainer">
+        <table>
+          <thead><b>Enter Order Items</b></thead>
+          <tbody>
+          	<tr ng-repeat="item in items" style="background-color:{{$index === 0?'rgba(100,100,100,100)':'rgba(100,100,100,100)'}}">
+           		<td>
+           			<span>Item Category:</span>
+		            <span id="itemType"  ng-disabled = "" name="itemCategory">
+		              <select id="cat" name="cat" class="form-control" ng-options="itemCategory for itemCategory in itemCategoryList" ng-model="item.category"  ng-disabled = "" required/></select>
+		            </span>
+            	</td>
+            	
+            	 <td>
+            	 	  <span>Item Height in inch(1-15): </span><br>
+		              <input type="text" name="itemHeight" ng-model="item.height" class="form-control" required/>
+		         </td>
+		         <td>
+		              <span>Item Width in inch(1-30): </span><br>
+		              <input type="text" name="itemWidth" ng-model="item.width" class="form-control" required/>
+		         </td>
+		         <td>
+		              <span>Item Breadth in inch(1-15): </span><br>
+		              <input type="text" name="itemBreadth" ng-model="item.breadth" class="form-control" required/>
+            	</td>
+            	              	
+              	<td>
+              		<span>Item Details:</span>
+		            <span id="itemDetails" class="itemDetails">
+		              <textarea name="comments" id="comments"  class="form-control" ng-model="item.details" required/></textarea>
+		            </span>
+            	</td>
+            	
+            	<td>
+              		<span for="deleteIcon" class="glyphicon glyphicon-trash cursor-pointer" alt="delete" title="delete row" ng-click="removeOrderItem($event,item)"> </span>
+              	</td>
+         	 </tr>
+         	 
+          </tbody>
+        </table>
+        
+     </div>
+    
+     <div  id="linksContainer" class="linksContainer" >
+         <span title="Add More Order Items">
+             <a ng-click="addOrderItems($event,items)" class="h-simple-text-link ">+Add More Order Items </a>
+        </span>
+     </div>
+         
+   </div> 
+   
+   
+  <div ng-show="order.onSlotBooking">
+  <div id="tableWrapper" class="tableWrapper">
+   <div id="tableContainer" class="tableContainer">
+        <table>
+          <thead><b>Enter Booking Start Time</b></thead>
+          <tbody>
+          	<tr style="background-color:{{'rgba(100,100,100,100)'}}">
+          		<span>(Slot for 2 hours from start time): </span><br>
+          		 <td>
+            	 	  <span>Booking Year: </span><br>
+            	 	  <select id="bookingYear" name="bookingYear" class="form-control" ng-options="bookingYear for bookingYear in bookingYearList" ng-model="bookingSlot.year"></select>
+            	 </td>
+            	 <td>
+            	 	  <span>Booking Month: </span><br>
+            	 	  <select id="bookingMonth" name="bookingMonth" class="form-control" ng-options="bookingMonth for bookingMonth in bookingMonthList" ng-model="bookingSlot.month"></select>
+            	 </td>
+            	 <td>
+            	 	  <span>Booking Day: </span><br>
+            	 	  <select id="bookingDay" name="bookingDay" class="form-control" ng-options="bookingDay for bookingDay in bookingDayList" ng-model="bookingSlot.day"></select>
+            	 </td>
+		         
+            	 <td>
+            	 	  <span>Booking Hour: </span><br>
+            	 	  <select id="bookingHour" name="bookingHour" class="form-control" ng-options="bookingHour for bookingHour in bookingHourList" ng-model="bookingSlot.hour"></select>
+            	 </td>
+		         <td>
+		              <span>Booking Minutes: </span><br>
+		              <select id="bookingMinutes" name="bookingMinutes" class="form-control" ng-options="bookingMinutes for bookingMinutes in bookingMinutesList" ng-model="bookingSlot.minute"></select>
+		         </td>
+		         		         <td>
+		              <span>Booking Seconds: </span><br>
+		              <select id="bookingSeconds" name="bookingSeconds" class="form-control" ng-options="bookingSeconds for bookingSeconds in bookingSecondsList" ng-model="bookingSlot.second"></select>
+		         </td>
+         	 </tr>
+         	 
+          </tbody>
+        </table>
+        
+     </div>
+   </div>   
+   
+   <div id="tableWrapper" class="tableWrapper" ng-show="order.onSlotBooking" >
+   <div id="tableContainer" class="tableContainer">
+        <table>
+          <thead><b>Enter Van and Box number</b></thead>
+          <tbody>
+          	<tr style="background-color:{{'rgba(100,100,100,100)'}}">
+          		<span>(Select Van/Box number): </span><br>
+          		 <td>
+            	 	  <span>Van Number: </span><br>
+            	 	  <select id="vanNumber" name="vanNumber" class="form-control" ng-options="vanNumber for vanNumber in vanNumberList" ng-model="vanNumber"></select>
+            	 </td>
+            	 <td>
+            	 	  <span>Box Number: </span><br>
+            	 	  <select id="boxNumber" name="boxNumber" class="form-control" ng-options="boxNumber for boxNumber in boxNumberList" ng-model="boxNumber"></select>
+            	 </td>
+         	 </tr>
+          </tbody>
+        </table>
+        
+     </div>
+   </div> 
+   
+   <div>
+      <button id="placeOrder"  ng-click="placeOrder()" class="h-button h-normal h-primary active"><b>Place Order</b></button>
+   </div>
+   </div>
+    <div>
+        <br/>
+        <div>
+          <button id="proceed"  ng-click="proceedForSlotBooking()" ng-show="order.onProceed"class="h-button h-normal h-primary active"><b>Continue</b></button>
+        </div>
+
+      </div>
+</div>  
