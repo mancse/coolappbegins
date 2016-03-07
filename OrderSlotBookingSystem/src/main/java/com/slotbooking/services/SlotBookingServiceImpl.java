@@ -13,6 +13,10 @@ import com.slotbooking.model.VanAvaibility;
 import com.slotbooking.mongodb.dao.BookingOrderDAO;
 import com.slotbooking.mongodb.dao.BookingOrderDAOImpl;
 
+/**
+ * This class is meant for implementing functionalities for slot booking
+ * @author m121kuma
+ */
 public class SlotBookingServiceImpl implements SlotBookingService
 {
 	BookingOrderDAO dao;
@@ -27,9 +31,17 @@ public class SlotBookingServiceImpl implements SlotBookingService
 		System.out.println(allOrders);
 		return allOrders;
 	}
+	
+	/**
+	 * This method is to calculate the percentage of space available in the selected 
+	 * carton number so that booking decision can be taken if space is available. 
+	 * @param box
+	 * @param items
+	 * @return BoxAvailibility
+	 */
 	private BoxAvailibility setBoxSpaceAvailable(BoxAvailibility box,List<Item> items)
 	{
-		double boxVol = 6750.0;
+		double boxVol = 6750.0;//Maximum volume of a carton
 		double usedVol = 0.0;
 		for (Item item: items)
 		{
@@ -42,9 +54,16 @@ public class SlotBookingServiceImpl implements SlotBookingService
 		return box;
 	}
 	
+	/**
+	 * This method is to calculate the percentage of space available in the selected 
+	 * van number so that booking decision can be taken if space is available. 
+	 * @param box
+	 * @param items
+	 * @return BoxAvailibility
+	 */
 	private VanAvaibility setVanSpaceAvailable(VanAvaibility van)
 	{
-		double vanVol = 135000.0;
+		double vanVol = 135000.0; //Maximum volume of a van
 		double usedVol = 0.0;
 		Set<BoxAvailibility> boxes = van.getBoxesAvailibility();
 		for (BoxAvailibility  box: boxes)
@@ -57,6 +76,15 @@ public class SlotBookingServiceImpl implements SlotBookingService
 		van.setVanSpaceAvailable(freePrecentage);
 		return van;
 	}
+	
+	/**
+	 * This method looks up database and finds out which all are the orders lying in the given time slot
+	 * of window 2 hours and calculates the van availability and box availability inside each van and returns
+	 * map of van number and VanAvaibility object. Each VanAvaibility object internally contains set of BoxAvaibility
+	 * object. Each BoxAvaibility object contains box number and percentage of available box space.
+	 * @param oldOrders
+	 * @return
+	 */
 	private Map<String,VanAvaibility> getVanBoxAvaibilityMap(List<BookingOrderResponse>  oldOrders)
 	{
 		Map<String,VanAvaibility> vanBoxAvaibilityMap = new HashMap<String,VanAvaibility>();
@@ -99,6 +127,12 @@ public class SlotBookingServiceImpl implements SlotBookingService
 		return vanBoxAvaibilityMap;
 	}
 	
+	/**
+	 * This  method is meant to calculate if the input slot is available or not on the basis of VanAvaibility.
+	 * @param vanBoxAvaibilityMap
+	 * @param oldOrders
+	 * @return Returns true if the input slot is available or else returns false.
+	 */
 	private boolean checkSlotAvailable(Map<String,VanAvaibility> vanBoxAvaibilityMap, List<BookingOrderResponse>  oldOrders)
 	{
 		boolean slotAvailable = true;
@@ -120,6 +154,11 @@ public class SlotBookingServiceImpl implements SlotBookingService
 		return slotAvailable;
 	}
 	
+	/**
+	 * This method is meant for placing the new order with time slot for the order.
+	 * @param BookingOrder
+	 * @return Returns true if order is placed successfully or else returns false. 
+	 */
 	public boolean placeNewOrder(BookingOrder bookingOrder)
 	{
 		List<BookingOrderResponse> oldOrders = dao.readByBookingSlot(bookingOrder.getBookingSlot());

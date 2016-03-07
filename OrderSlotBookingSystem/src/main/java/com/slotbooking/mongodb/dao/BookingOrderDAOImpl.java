@@ -22,18 +22,19 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 
 	MongoClient mongo;
 	DB db;
-	DBCollection orderColl;
-	DBCollection slotColl;
-	
+	DBCollection orderColl;	
 	public BookingOrderDAOImpl()
 	{
 		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDB("bookingOrder");
 		System.out.println("Connect to database successfully");
 		orderColl = db.getCollection("booking");
-		slotColl = db.getCollection("slot");
 	    System.out.println("Collection order selected successfully");
 	}
+	
+	/**
+	 * This method is meant for saving the booking order in MongoDB database
+	 */
 	public void saveBookingOrder(BookingOrder bookingOrder) {
 		try
 		{
@@ -77,11 +78,13 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 		return timeSlotString.toString();
 	}
 	
-	private void saveSlotAvaibility(SlotAvaibility slotAvaibility) 
-	{
-		
-	}
-	
+	/**
+	 * Method returns all the items and their attributes of any order.
+	 * There can be multiple items inside an order hence list of items 
+	 * are returned.
+	 * @param dbObject
+	 * @return list of items.
+	 */
 	private List<Item> getOrderItems(DBObject dbObject)
 	{
 		List<Item> items = new ArrayList<Item>();
@@ -100,6 +103,11 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 		return items;
 	}
 	
+	/**
+	 * Encapsulates date and time of booking into TimeSlot object
+	 * @param dbObject
+	 * @return
+	 */
 	private TimeSlot getOrderTimeSlot(DBObject dbObject)
 	{
 		TimeSlot timeSlot = new TimeSlot();
@@ -112,6 +120,9 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 		return timeSlot;
 	}
 	
+	/**
+	 * This method is meant for retrieving all the booking orders. 
+	 */
 	public List<BookingOrderResponse> readAll()
 	{
 		List<BookingOrderResponse> allBookings = new ArrayList<BookingOrderResponse>();
@@ -136,6 +147,9 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	}
 	
 	int TWOHOURSINSECONDS = 7200;
+	/**
+	 * Returns all the booking orders between current booking time and 2 hours past from it.
+	 */
 	public List<BookingOrderResponse> readByBookingSlot(TimeSlot currentOrderTimeSlot)
 	{
 		List<BookingOrderResponse> allBookings = new ArrayList<BookingOrderResponse>();
