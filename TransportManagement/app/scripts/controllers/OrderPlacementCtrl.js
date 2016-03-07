@@ -4,7 +4,7 @@
  * @ngdoc function
  * @name employeeManagementApp.controller:HomeCtrl
  * @description
- * # HomeCtrl
+ * # This is the main controller for order placement.
  * Controller of the employeeManagementApp
  */
 angular.module('slotBookingApp')
@@ -30,6 +30,9 @@ angular.module('slotBookingApp')
     $scope.order = {"onSlotBooking":false};
     $scope.order= {"onProceed": true};
 
+	/*
+	** Method to add single/multiple items in an array.
+	*/
     $scope.addOrderItems = function($event) {
         var items = $scope.items;
     	if (items.length)
@@ -48,6 +51,9 @@ angular.module('slotBookingApp')
         return false;
       };
       
+	/*
+	** Method to remove item from an order.
+	*/
     $scope.removeOrderItem = function($event,item) {
     	  var items = $scope.items;
 
@@ -63,6 +69,10 @@ angular.module('slotBookingApp')
           return false;
      };
      
+	/*
+	** Method to proceed for slot booking once all 
+	** desired items are added in an order.
+	*/
     $scope.proceedForSlotBooking = function()
     {
      	if ($scope.items.length)
@@ -84,6 +94,10 @@ angular.module('slotBookingApp')
     	$scope.bookingSlot.minute = date.getMinutes();
     	$scope.bookingSlot.second = date.getSeconds();
     }
+	
+	/*
+	** Method to place an order
+	*/
     $scope.placeOrder= function()
     {
     	var error = validationService.validBookingSlot($scope.bookingSlot);

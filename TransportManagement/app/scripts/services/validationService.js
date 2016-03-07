@@ -1,6 +1,12 @@
+/*
+** Validation service used for validating input order attributes.
+*/
 angular.module('slotBookingApp')
   .service('validationService',function () {
 	  
+	  /*
+	  ** Method to validate attributes of an item entered in an order. Attributes are height,width and breadth.
+	  */
 	  this.validItemEntered = function(items)
 	    {
 	    	var error = "";
@@ -49,6 +55,9 @@ angular.module('slotBookingApp')
 	    	return error;
 	     };
 	     
+		 /*
+		 ** Method to validate booking slot time. 
+		 */
 	     this.validBookingSlot = function(bookingSlot)
 	     {
 	    	 var year = bookingSlot.year;

@@ -4,7 +4,8 @@
  * @ngdoc function
  * @name slotBookingApp.controller:AllOrdersDetailsCtrl
  * @description
- * # AboutCtrl
+ * # This controller is meant for displaying all set of placed orders 
+ * # with its details like booking time and other attributes category,height,width and breadth.
  * Controller of the slotBookingApp
  */
 angular.module('slotBookingApp')
@@ -12,6 +13,10 @@ angular.module('slotBookingApp')
                                       function ($scope,$q,$http,utilityService,validationService){
 	$scope.showOrderDetail = false;
 	$scope.onBackPress = false;
+	
+	/*
+	** Method to list all set of placed orders
+	*/
 	$scope.allOrdersLoad = function()
 	{
 		var promise = utilityService.readAllOrders();
@@ -22,6 +27,9 @@ angular.module('slotBookingApp')
       		console.log('Unable to place the order!!!: '+reject);});
 	}
 	
+	/*
+	** Method to show details of an specific order.
+	*/
 	$scope.getOrderDetail = function($event,orderId)
 	{
 		var allOrders = $scope.allOrders;

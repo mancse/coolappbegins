@@ -1,6 +1,13 @@
+/*
+** Utility service which acts as client to the RESTful webserivece.
+*/
 angular.module('slotBookingApp')
   .service('utilityService',['$http','$q',function ($http,$q) {
 	  var baseUrl = "http://localhost:8080";
+	  
+	  /*
+	  ** Method calling POST method of RESTful service for placing an order
+	  */
 	  this.writeOrderData = function(data)
 	  {
 		  var placeOrderUrl = baseUrl+"/OrderSlotBookingSystem/slotbooking/service/place/newOrder";
@@ -19,6 +26,9 @@ angular.module('slotBookingApp')
 		  return deferred.promise;
 	  }
 	  
+	  /*
+	  ** Method calling GET method of RESTful service for retriving list of all placed orders.
+	  */
 	  this.readAllOrders = function()
 	  {
 		  var placeOrderUrl = baseUrl+"/OrderSlotBookingSystem/slotbooking/service/get/allOrdersDetail";
