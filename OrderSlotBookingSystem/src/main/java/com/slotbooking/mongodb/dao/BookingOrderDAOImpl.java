@@ -23,7 +23,9 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	MongoClient mongo;
 	DB db;
 	DBCollection orderColl;	
-	public BookingOrderDAOImpl()
+	static BookingOrderDAOImpl instance = null;
+	
+	private BookingOrderDAOImpl()
 	{
 		mongo = new MongoClient("localhost", 27017);
 		db = mongo.getDB("bookingOrder");
@@ -32,6 +34,14 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	    System.out.println("Collection order selected successfully");
 	}
 	
+	public static BookingOrderDAOImpl getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new BookingOrderDAOImpl();
+		}
+		return instance;
+	}
 	/**
 	 * This method is meant for saving the booking order in MongoDB database
 	 */
