@@ -15,7 +15,6 @@ import com.mongodb.MongoClient;
 import com.slotbooking.model.BookingOrder;
 import com.slotbooking.model.BookingOrderResponse;
 import com.slotbooking.model.Item;
-import com.slotbooking.model.SlotAvaibility;
 import com.slotbooking.model.TimeSlot;
 
 public class BookingOrderDAOImpl implements BookingOrderDAO{
@@ -23,7 +22,7 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	MongoClient mongo;
 	DB db;
 	DBCollection orderColl;	
-	static BookingOrderDAOImpl instance = null;
+	
 	
 	private BookingOrderDAOImpl()
 	{
@@ -34,14 +33,19 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	    System.out.println("Collection order selected successfully");
 	}
 	
+	/*
+	 * Bill pugh's singleton implementation for lazy object initialization
+	 */
+	private static class BookingOrderDAOHelper
+	{
+		private static final BookingOrderDAOImpl INSTANCE = new BookingOrderDAOImpl();
+	}
+	
 	public static BookingOrderDAOImpl getInstance()
 	{
-		if (instance == null)
-		{
-			instance = new BookingOrderDAOImpl();
-		}
-		return instance;
+		return BookingOrderDAOHelper.INSTANCE;
 	}
+
 	/**
 	 * This method is meant for saving the booking order in MongoDB database
 	 */
