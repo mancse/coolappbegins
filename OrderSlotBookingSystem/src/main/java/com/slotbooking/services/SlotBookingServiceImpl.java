@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.mongodb.DBCollection;
 import com.slotbooking.model.BookingOrder;
 import com.slotbooking.model.BookingOrderResponse;
 import com.slotbooking.model.BoxAvailibility;
@@ -19,15 +20,15 @@ import com.slotbooking.mongodb.dao.BookingOrderDAOImpl;
  */
 public class SlotBookingServiceImpl implements SlotBookingService
 {
-	BookingOrderDAO dao;
-	public SlotBookingServiceImpl() 
-	{
-		dao = new BookingOrderDAOImpl();
+	
+	public SlotBookingServiceImpl(){
 	}
 
 	public List<BookingOrderResponse> getAllOrders()
 	{
-		List<BookingOrderResponse> allOrders = dao.readAll();
+		BookingOrderDAO dao = BookingOrderDAOImpl.getInstance();
+		DBCollection orderColl = dao.getBookingCollection();
+		List<BookingOrderResponse> allOrders = dao.readAll(orderColl);
 		System.out.println(allOrders);
 		return allOrders;
 	}
@@ -161,14 +162,16 @@ public class SlotBookingServiceImpl implements SlotBookingService
 	 */
 	public boolean placeNewOrder(BookingOrder bookingOrder)
 	{
-		List<BookingOrderResponse> oldOrders = dao.readByBookingSlot(bookingOrder.getBookingSlot());
+		BookingOrderDAO dao = BookingOrderDAOImpl.getInstance();
+		DBCollection orderColl = dao.getBookingCollection();
+		List<BookingOrderResponse> oldOrders = dao.readByBookingSlot(orderColl,bookingOrder.getBookingSlot());
 		Map<String,VanAvaibility> vanBoxAvaibilityMap = getVanBoxAvaibilityMap(oldOrders);
 		
 		if(!checkSlotAvailable(vanBoxAvaibilityMap,oldOrders))
 		{
 			return false;
 		}
-		dao.saveBookingOrder(bookingOrder);
+		dao.saveBookingOrder(orderColl,bookingOrder);
 		return true;
 	}
 }

@@ -18,19 +18,7 @@ import com.slotbooking.model.Item;
 import com.slotbooking.model.TimeSlot;
 
 public class BookingOrderDAOImpl implements BookingOrderDAO{
-
-	MongoClient mongo;
-	DB db;
-	DBCollection orderColl;	
-	
-	
-	private BookingOrderDAOImpl()
-	{
-		mongo = new MongoClient("localhost", 27017);
-		db = mongo.getDB("bookingOrder");
-		System.out.println("Connect to database successfully");
-		orderColl = db.getCollection("booking");
-	    System.out.println("Collection order selected successfully");
+	private BookingOrderDAOImpl(){	
 	}
 	
 	/*
@@ -46,10 +34,19 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 		return BookingOrderDAOHelper.INSTANCE;
 	}
 
+	public DBCollection getBookingCollection()
+	{	
+		MongoClient mongo = new MongoClient("localhost", 27017);
+		DB db = mongo.getDB("bookingOrder");
+		System.out.println("Connect to database successfully");
+		DBCollection orderColl = db.getCollection("booking");
+	    System.out.println("Collection order selected successfully");
+	    return orderColl;
+	}
 	/**
 	 * This method is meant for saving the booking order in MongoDB database
 	 */
-	public void saveBookingOrder(BookingOrder bookingOrder) {
+	public void saveBookingOrder(DBCollection orderColl,BookingOrder bookingOrder) {
 		try
 		{
 			List<BasicDBObject> itemDocsList = new ArrayList<BasicDBObject>();
@@ -75,7 +72,6 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 					append("vanNumber", bookingOrder.getVanNumber()).
 					append("cartonNumber", bookingOrder.getCartonNumber()).
 					append("bookingSlot", timeSlotDoc).append("timeSlotStr", getTimeSlotInString(timeSlot));
-			
 			orderColl.insert(bookingOrderDoc);
 		}
 		catch(Exception e)
@@ -137,7 +133,7 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	/**
 	 * This method is meant for retrieving all the booking orders. 
 	 */
-	public List<BookingOrderResponse> readAll()
+	public List<BookingOrderResponse> readAll(DBCollection orderColl)
 	{
 		List<BookingOrderResponse> allBookings = new ArrayList<BookingOrderResponse>();
 		DBCursor dbCursor = orderColl.find();
@@ -164,7 +160,7 @@ public class BookingOrderDAOImpl implements BookingOrderDAO{
 	/**
 	 * Returns all the booking orders between current booking time and 2 hours past from it.
 	 */
-	public List<BookingOrderResponse> readByBookingSlot(TimeSlot currentOrderTimeSlot)
+	public List<BookingOrderResponse> readByBookingSlot(DBCollection orderColl,TimeSlot currentOrderTimeSlot)
 	{
 		List<BookingOrderResponse> allBookings = new ArrayList<BookingOrderResponse>();
 		DBCursor dbCursor = orderColl.find();
