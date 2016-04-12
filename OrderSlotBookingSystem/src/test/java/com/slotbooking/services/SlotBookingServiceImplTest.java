@@ -61,7 +61,31 @@ public class SlotBookingServiceImplTest {
 	}
 	
 	@Test
-	public void getAllOrders()
+	public void getAllOrdersWhenNoOrderPlaced()
+	{
+		BookingOrderResponse bookingOrderRespMock = Mockito.mock(BookingOrderResponse.class);
+		List<BookingOrderResponse> bookingOrderRespList = new ArrayList<BookingOrderResponse>();
+		bookingOrderRespList.add(bookingOrderRespMock);
+		
+		Mockito.doReturn(bookingOrderMock).when(bookingOrderRespMock).getBookingOrder();
+		
+		TimeSlot timeSlotMock = Mockito.mock(TimeSlot.class);
+	    Mockito.doReturn(timeSlotMock).when(bookingOrderMock).getBookingSlot();
+	    
+	    //Mockito.doReturn("DEL-123").when(bookingOrderMock).getVanNumber();
+		PowerMockito.mockStatic(BookingOrderDAOImpl.class);
+		BookingOrderDAO daoMock = Mockito.mock(BookingOrderDAOImpl.class);
+		PowerMockito.when(BookingOrderDAOImpl.getInstance()).thenReturn((BookingOrderDAOImpl) daoMock);
+		PowerMockito.when(daoMock.getBookingCollection()).thenReturn(orderCollMock);
+		PowerMockito.when(daoMock.readByBookingSlot(orderCollMock, timeSlotMock)).thenReturn(bookingOrderRespList);
+		PowerMockito.when(daoMock.readAll(orderCollMock)).thenReturn(bookingOrderRespList);
+		Mockito.doNothing().when(daoMock).saveBookingOrder(orderCollMock, bookingOrderMock);
+		
+		List<BookingOrderResponse> allPlacedOrders = service.getAllOrders();
+		assertEquals(1,allPlacedOrders.size());
+	}
+	@Test
+	public void getAllOrdersWhenOrderAlreadyPlaced()
 	{
 		BookingOrderResponse bookingOrderRespMock = Mockito.mock(BookingOrderResponse.class);
 		List<BookingOrderResponse> bookingOrderRespList = new ArrayList<BookingOrderResponse>();
